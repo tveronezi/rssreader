@@ -158,6 +158,8 @@
           <tomeeClassifier>plus</tomeeClassifier>
           <args>-Xmx512m -XX:PermSize=256m</args>
           <context>rssreader</context>
+          <!--<debug>true</debug>-->
+          <!--<debugPort>8005</debugPort>-->
         </configuration>
       </plugin>
     </plugins>

@@ -189,6 +189,9 @@
             me.control({
                 'rssreader-feed-sources': {
                     refreshpanel: function () {
+                        Ext.Ajax.request({
+                            url:  window.ROOT_URL + 'rest/rss/channel/reload'
+                        });
                         window.location.reload();
                     }
                 },

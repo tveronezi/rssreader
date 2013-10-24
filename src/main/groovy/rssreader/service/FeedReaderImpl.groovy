@@ -27,51 +27,55 @@ import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
 class FeedReaderImpl {
-    private static def LOG = LoggerFactory.getLogger(FeedReaderImpl)
+    private def log = LoggerFactory.getLogger(FeedReaderImpl)
 
-    void read(String url, callback) {
+    private void withRawContent(String url, callback) {
         def source = new URI(url)
         def is = source.toURL().openStream()
-        def rawContent
         try {
-            rawContent = new XmlSlurper().parse(is)
+            callback(new XmlSlurper().parse(is))
         } catch (SAXException ex) {
-            LOG.error("Impossible to read xml Content: ${is.text}", ex)
-            return
+            log.error("Impossible to read xml Content: ${is.text}", ex)
+            throw ex
         } catch (IOException ex) {
-            LOG.error('Impossible to read xml', ex)
-            return
+            log.error('Impossible to read xml', ex)
+            throw ex
         } finally {
             try {
                 is.close()
             } catch (ignore) {}
         }
-        def channel = rawContent.channel
-        def items = []
-        channel.childNodes().each {
-            if (it.name() == 'item') {
-                items << it
-            }
-        }
-        def channelDto = new RssChannelDto(
-                title: channel.title.text(),
-                link: channel.link.text()
-        )
-        def itemDtoList = items.collect { item ->
-            def dto = new RssChannelItemDto()
-            item.children().each { attr ->
-                switch (attr.name()) {
-                    case ['title', 'link', 'description']:
-                        dto[attr.name() as String] = attr.text()
-                        break
-                    default:
-                        break
-                }
+    }
 
+    void read(String url, callback) {
+        withRawContent(url, { rawContent ->
+            def channel = rawContent.channel
+            def items = []
+            channel.childNodes().each {
+                if (it.name() == 'item') {
+                    items << it
+                }
             }
-            dto
-        }
-        callback(channelDto, itemDtoList)
+            def channelDto = new RssChannelDto(
+                    title: channel.title.text(),
+                    link: channel.link.text()
+            )
+            def itemDtoList = items.collect { item ->
+                def dto = new RssChannelItemDto()
+                item.children().each { attr ->
+                    switch (attr.name()) {
+                        case ['title', 'link', 'description']:
+                            dto[attr.name() as String] = attr.text()
+                            break
+                        default:
+                            break
+                    }
+
+                }
+                dto
+            }
+            callback(channelDto, itemDtoList)
+        })
     }
 
 }

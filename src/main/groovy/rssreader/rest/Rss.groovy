@@ -26,12 +26,21 @@ import rssreader.service.FeedImpl
 
 import javax.inject.Inject
 import javax.ws.rs.*
+import javax.ws.rs.core.Response
 
 @Path("/rss")
 class Rss {
 
     @Inject
     private FeedImpl service
+
+    @GET
+    @Path("/channel/reload")
+    @Produces("application/json")
+    Response reloadChannels() {
+        service.updateChannels()
+        Response.ok().build()
+    }
 
     @GET
     @Path("/channel")
