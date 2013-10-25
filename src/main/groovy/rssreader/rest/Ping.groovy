@@ -24,6 +24,7 @@ import javax.ws.rs.Path
 @Path("/ping")
 class Ping {
 
+    @SuppressWarnings('EmptyMethod')
     @GET
     void ping() {
         // no-op
