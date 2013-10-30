@@ -9,8 +9,6 @@ You can run the application by following these simple steps.
 2. Go to the root of your application and run *mvn clean install tomee:run*
 3. Open <http://localhost:8080/rssreader>
 
- 
-
 ### Dependency ###
 
 1. >= Maven 3.x.x 
