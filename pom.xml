@@ -60,6 +60,12 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>extjs</artifactId>
+            <version>4.2.1.883-1</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.openejb</groupId>
             <artifactId>javaee-api</artifactId>
             <version>${javaee.api}</version>

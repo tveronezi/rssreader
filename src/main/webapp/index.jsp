@@ -21,9 +21,9 @@
 <head>
     <meta charset="utf-8">
     <title>rssreader</title>
-    <link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.2.0-gpl/resources/ext-theme-neptune/ext-theme-neptune-all.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/webjars/extjs/4.2.1.883/resources/css/ext-all-neptune.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/app/app.css'/>">
-    <script type="text/javascript" src="http://cdn.sencha.io/ext-4.2.0-gpl/ext-all.js"></script>
+    <script type="text/javascript" src="<c:url value='/webjars/extjs/4.2.1.883/ext-all.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.3/jquery.min.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/webjars/underscorejs/1.7.0/underscore-min.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/webjars/backbonejs/1.1.2/backbone-min.js'/>"></script>
