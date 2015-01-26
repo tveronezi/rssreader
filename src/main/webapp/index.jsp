@@ -24,9 +24,9 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.2.0-gpl/resources/ext-theme-neptune/ext-theme-neptune-all.css">
     <link rel="stylesheet" type="text/css" href="<c:url value='/app/app.css'/>">
     <script type="text/javascript" src="http://cdn.sencha.io/ext-4.2.0-gpl/ext-all.js"></script>
-    <script type="text/javascript" src="<c:url value='/app/lib/jquery/jquery.min.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/app/lib/underscorejs/underscore-min.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/app/lib/backbone/backbone-min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.3/jquery.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/webjars/underscorejs/1.7.0/underscore-min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/webjars/backbonejs/1.1.2/backbone-min.js'/>"></script>
     <script type="text/javascript">
         var SESSION_ID = "<%=request.getSession().getId()%>";
         var ROOT_URL = "<c:url value='/'/>".replace(';jsessionid=' + SESSION_ID, '');
